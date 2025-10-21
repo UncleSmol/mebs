@@ -1,0 +1,388 @@
+/* Text Utilities for MEBS Design System */
+/* ==================================== */
+
+/* Main Heading Styles */
+.text-main-heading {
+    font-family: var(--mebs-font-family-heading);
+    font-size: var(--mebs-font-size-hero);
+    font-weight: var(--mebs-font-weight-black);
+    line-height: var(--mebs-line-height-tight);
+    letter-spacing: var(--mebs-tracking-tight);
+    color: var(--mebs-royal-gold);
+    text-shadow: var(--mebs-text-glow);
+    margin: 0;
+  }
+  
+  .text-main-subheading {
+    font-family: var(--mebs-font-family-heading);
+    font-size: var(--mebs-font-size-4xl);
+    font-weight: var(--mebs-font-weight-bold);
+    line-height: var(--mebs-line-height-snug);
+    letter-spacing: var(--mebs-tracking-tight);
+    color: var(--mebs-white);
+    margin: 0;
+  }
+  
+  /* Section Headings */
+  .text-section-heading {
+    font-family: var(--mebs-font-family-heading);
+    font-size: var(--mebs-font-size-3xl);
+    font-weight: var(--mebs-font-weight-bold);
+    line-height: var(--mebs-line-height-snug);
+    color: var(--mebs-black);
+    margin: 0;
+  }
+  
+  .text-section-subheading {
+    font-family: var(--mebs-font-family-heading);
+    font-size: var(--mebs-font-size-xl);
+    font-weight: var(--mebs-font-weight-medium);
+    line-height: var(--mebs-line-height-normal);
+    color: var(--mebs-royal-gold);
+    margin: 0;
+  }
+  
+  /* Content Typography */
+  .text-content-large {
+    font-family: var(--mebs-font-family-body);
+    font-size: var(--mebs-font-size-lg);
+    font-weight: var(--mebs-font-weight-light);
+    line-height: var(--mebs-line-height-relaxed);
+    color: var(--mebs-black);
+    margin: 0;
+  }
+  
+  .text-content-body {
+    font-family: var(--mebs-font-family-body);
+    font-size: var(--mebs-font-size-base);
+    font-weight: var(--mebs-font-weight-regular);
+    line-height: var(--mebs-line-height-normal);
+    color: var(--mebs-black);
+    margin: 0;
+  }
+  
+  .text-content-small {
+    font-family: var(--mebs-font-family-body);
+    font-size: var(--mebs-font-size-sm);
+    font-weight: var(--mebs-font-weight-regular);
+    line-height: var(--mebs-line-height-normal);
+    color: var(--mebs-gray-600);
+    margin: 0;
+  }
+  
+  /* Display Typography */
+  .text-display-hero {
+    font-family: var(--mebs-font-family-heading);
+    font-size: var(--mebs-font-size-6xl);
+    font-weight: var(--mebs-font-weight-black);
+    line-height: var(--mebs-line-height-tight);
+    letter-spacing: var(--mebs-tracking-tighter);
+    color: var(--mebs-royal-gold);
+    text-transform: uppercase;
+    margin: 0;
+  }
+  
+  .text-display-large {
+    font-family: var(--mebs-font-family-heading);
+    font-size: var(--mebs-font-size-5xl);
+    font-weight: var(--mebs-font-weight-extrabold);
+    line-height: var(--mebs-line-height-tight);
+    color: var(--mebs-black);
+    margin: 0;
+  }
+  
+  .text-display-medium {
+    font-family: var(--mebs-font-family-heading);
+    font-size: var(--mebs-font-size-4xl);
+    font-weight: var(--mebs-font-weight-bold);
+    line-height: var(--mebs-line-height-snug);
+    color: var(--mebs-black);
+    margin: 0;
+  }
+  
+  /* Accent & Emphasis */
+  .text-accent-gold {
+    color: var(--mebs-royal-gold);
+    font-weight: var(--mebs-font-weight-semibold);
+  }
+  
+  .text-accent-black {
+    color: var(--mebs-black);
+    font-weight: var(--mebs-font-weight-bold);
+  }
+  
+  .text-accent-white {
+    color: var(--mebs-white);
+    font-weight: var(--mebs-font-weight-semibold);
+  }
+  
+  /* Service-specific Typography */
+  .text-service-electric {
+    color: var(--mebs-electric);
+    font-weight: var(--mebs-font-weight-semibold);
+  }
+  
+  .text-service-construction {
+    color: var(--mebs-construction);
+    font-weight: var(--mebs-font-weight-semibold);
+  }
+  
+  .text-service-plumbing {
+    color: var(--mebs-plumbing);
+    font-weight: var(--mebs-font-weight-semibold);
+  }
+  
+  .text-service-cleaning {
+    color: var(--mebs-cleaning);
+    font-weight: var(--mebs-font-weight-semibold);
+  }
+  
+  /* Utility Classes */
+  .text-uppercase {
+    text-transform: uppercase;
+    letter-spacing: var(--mebs-tracking-wide);
+  }
+  
+  .text-lowercase {
+    text-transform: lowercase;
+  }
+  
+  .text-capitalize {
+    text-transform: capitalize;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-left {
+    text-align: left;
+  }
+  
+  .text-right {
+    text-align: right;
+  }
+  
+  .text-justify {
+    text-align: justify;
+  }
+  
+  /* Weight Utilities */
+  .text-thin {
+    font-weight: var(--mebs-font-weight-thin);
+  }
+  
+  .text-light {
+    font-weight: var(--mebs-font-weight-light);
+  }
+  
+  .text-regular {
+    font-weight: var(--mebs-font-weight-regular);
+  }
+  
+  .text-medium {
+    font-weight: var(--mebs-font-weight-medium);
+  }
+  
+  .text-semibold {
+    font-weight: var(--mebs-font-weight-semibold);
+  }
+  
+  .text-bold {
+    font-weight: var(--mebs-font-weight-bold);
+  }
+  
+  .text-extrabold {
+    font-weight: var(--mebs-font-weight-extrabold);
+  }
+  
+  .text-black {
+    font-weight: var(--mebs-font-weight-black);
+  }
+  
+  /* Color Utilities */
+  .text-gold {
+    color: var(--mebs-royal-gold);
+  }
+  
+  .text-gold-dark {
+    color: var(--mebs-royal-gold-dark);
+  }
+  
+  .text-gold-light {
+    color: var(--mebs-royal-gold-light);
+  }
+  
+  .text-black {
+    color: var(--mebs-black);
+  }
+  
+  .text-white {
+    color: var(--mebs-white);
+  }
+  
+  .text-gray-light {
+    color: var(--mebs-gray-400);
+  }
+  
+  .text-gray {
+    color: var(--mebs-gray-600);
+  }
+  
+  .text-gray-dark {
+    color: var(--mebs-gray-800);
+  }
+  
+  /* Spacing Utilities */
+  .text-spacing-tight {
+    letter-spacing: var(--mebs-tracking-tight);
+  }
+  
+  .text-spacing-normal {
+    letter-spacing: var(--mebs-tracking-normal);
+  }
+  
+  .text-spacing-wide {
+    letter-spacing: var(--mebs-tracking-wide);
+  }
+  
+  .text-spacing-wider {
+    letter-spacing: var(--mebs-tracking-wider);
+  }
+  
+  .text-spacing-widest {
+    letter-spacing: var(--mebs-tracking-widest);
+  }
+  
+  /* Line Height Utilities */
+  .text-leading-tight {
+    line-height: var(--mebs-line-height-tight);
+  }
+  
+  .text-leading-snug {
+    line-height: var(--mebs-line-height-snug);
+  }
+  
+  .text-leading-normal {
+    line-height: var(--mebs-line-height-normal);
+  }
+  
+  .text-leading-relaxed {
+    line-height: var(--mebs-line-height-relaxed);
+  }
+  
+  .text-leading-loose {
+    line-height: var(--mebs-line-height-loose);
+  }
+  
+  /* Special Effects */
+  .text-glow-gold {
+    text-shadow: var(--mebs-text-glow);
+  }
+  
+  .text-glow-strong {
+    text-shadow: var(--mebs-text-glow-strong);
+  }
+  
+  .text-gradient-gold {
+    background: var(--mebs-gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--mebs-royal-gold);
+  }
+  
+  .text-gradient-black-gold {
+    background: var(--mebs-gradient-black-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--mebs-black);
+  }
+  
+  /* Decoration */
+  .text-underline {
+    text-decoration: underline;
+    text-decoration-color: var(--mebs-royal-gold);
+    text-underline-offset: 0.2em;
+  }
+  
+  .text-underline-thick {
+    text-decoration: underline;
+    text-decoration-color: var(--mebs-royal-gold);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+  
+  /* No-wrap and truncation */
+  .text-nowrap {
+    white-space: nowrap;
+  }
+  
+  .text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .text-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .text-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .text-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Responsive Text Utilities */
+  @media (max-width: 768px) {
+    .text-main-heading {
+      font-size: var(--mebs-font-size-5xl);
+    }
+    
+    .text-main-subheading {
+      font-size: var(--mebs-font-size-3xl);
+    }
+    
+    .text-display-hero {
+      font-size: var(--mebs-font-size-5xl);
+    }
+    
+    .text-display-large {
+      font-size: var(--mebs-font-size-4xl);
+    }
+    
+    .text-display-medium {
+      font-size: var(--mebs-font-size-3xl);
+    }
+  }
+  
+  /* Dark Mode Support */
+  @media (prefers-color-scheme: dark) {
+    .text-content-body,
+    .text-content-large,
+    .text-content-small,
+    .text-section-heading,
+    .text-display-large,
+    .text-display-medium {
+      color: var(--mebs-white);
+    }
+    
+    .text-gray-light,
+    .text-gray,
+    .text-gray-dark {
+      color: var(--mebs-gray-300);
+    }
+  }
