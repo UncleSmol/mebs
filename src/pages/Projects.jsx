@@ -9,7 +9,6 @@ import {
   Phone, 
   Mail,
   Zap,
-  Hammer,
   Wrench,
   Building
 } from 'lucide-react'
@@ -150,6 +149,11 @@ const Projects = () => {
     { number: '50+', label: 'Team Members' }
   ]
 
+  // Utility function for image paths
+  const getImagePath = (folder, image) => {
+    return `/${folder}/${image}`;
+  };
+
   const fadeInUp = {
     initial: { y: 60, opacity: 0 },
     animate: { y: 0, opacity: 1 },
@@ -179,7 +183,7 @@ const Projects = () => {
       <section style={{
         background: 'var(--mebs-gradient-dark-elegant)',
         color: 'var(--mebs-white)',
-        padding: 'var(--mebs-spacer-5xl) var(--mebs-spacer-md)',
+        padding: 'clamp(2rem, 8vw, 4rem) var(--mebs-spacer-md)',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -198,7 +202,8 @@ const Projects = () => {
               className="text-main-heading text-gold-glow"
               style={{
                 marginBottom: 'var(--mebs-spacer-md)',
-                textAlign: 'center'
+                textAlign: 'center',
+                fontSize: 'clamp(2rem, 6vw, 3rem)'
               }}
               variants={fadeInUp}
             >
@@ -211,7 +216,8 @@ const Projects = () => {
                 marginBottom: 'var(--mebs-spacer-xl)',
                 maxWidth: '800px',
                 marginLeft: 'auto',
-                marginRight: 'auto'
+                marginRight: 'auto',
+                fontSize: 'clamp(1.25rem, 3vw, 1.75rem)'
               }}
               variants={fadeInUp}
             >
@@ -225,7 +231,8 @@ const Projects = () => {
                 maxWidth: '600px',
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                opacity: 0.9
+                opacity: 0.9,
+                fontSize: 'clamp(1rem, 2vw, 1.25rem)'
               }}
               variants={fadeInUp}
             >
@@ -235,9 +242,11 @@ const Projects = () => {
             <motion.div 
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
                 gap: 'var(--mebs-spacer-xl)',
-                marginTop: 'var(--mebs-spacer-4xl)'
+                marginTop: 'var(--mebs-spacer-4xl)',
+                maxWidth: '800px',
+                margin: '0 auto'
               }}
               variants={staggerContainer}
             >
@@ -251,11 +260,14 @@ const Projects = () => {
                   variants={fadeInUp}
                 >
                   <div className="text-display-large text-gold" style={{
-                    marginBottom: 'var(--mebs-spacer-xs)'
+                    marginBottom: 'var(--mebs-spacer-xs)',
+                    fontSize: 'clamp(1.5rem, 4vw, 2rem)'
                   }}>
                     {stat.number}
                   </div>
-                  <div className="text-content-body text-uppercase text-spacing-wide">
+                  <div className="text-content-body text-uppercase text-spacing-wide" style={{
+                    fontSize: 'clamp(0.75rem, 1.5vw, 0.875rem)'
+                  }}>
                     {stat.label}
                   </div>
                 </motion.div>
@@ -281,7 +293,7 @@ const Projects = () => {
       {/* Projects Grid Section */}
       <section style={{
         background: 'var(--mebs-white)',
-        padding: 'var(--mebs-spacer-5xl) var(--mebs-spacer-md)'
+        padding: 'clamp(2rem, 8vw, 4rem) var(--mebs-spacer-md)'
       }}>
         <div className="container" style={{
           maxWidth: 'var(--mebs-container-xl)',
@@ -297,7 +309,8 @@ const Projects = () => {
               className="text-section-heading text-center"
               style={{
                 marginBottom: 'var(--mebs-spacer-sm)',
-                color: 'var(--mebs-royal-gold)'
+                color: 'var(--mebs-royal-gold)',
+                fontSize: 'clamp(1.5rem, 4vw, 2rem)'
               }}
               variants={fadeInUp}
             >
@@ -308,7 +321,8 @@ const Projects = () => {
               className="text-section-subheading text-center"
               style={{
                 marginBottom: 'var(--mebs-spacer-4xl)',
-                color: 'var(--mebs-gray-700)'
+                color: 'var(--mebs-gray-700)',
+                fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)'
               }}
               variants={fadeInUp}
             >
@@ -318,7 +332,7 @@ const Projects = () => {
             <div style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: 'var(--mebs-spacer-5xl)'
+              gap: 'clamp(2rem, 6vw, 4rem)'
             }}>
               {projects.map((project, index) => {
                 const ProjectIcon = project.icon
@@ -328,7 +342,7 @@ const Projects = () => {
                     variants={fadeInUp}
                     style={{
                       background: index % 2 === 0 ? 'var(--mebs-white-off)' : 'var(--mebs-white)',
-                      padding: 'var(--mebs-spacer-4xl)',
+                      padding: 'clamp(1.5rem, 4vw, 2.5rem)',
                       borderRadius: 'var(--mebs-border-radius-2xl)',
                       border: 'var(--mebs-border-gold-thin)',
                       boxShadow: index % 2 === 0 ? 'var(--mebs-shadow)' : 'none'
@@ -337,30 +351,33 @@ const Projects = () => {
                     {/* Project Header */}
                     <div style={{
                       textAlign: 'center',
-                      marginBottom: 'var(--mebs-spacer-3xl)'
+                      marginBottom: 'clamp(1.5rem, 4vw, 2rem)'
                     }}>
                       <div style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         gap: 'var(--mebs-spacer-md)',
-                        marginBottom: 'var(--mebs-spacer-lg)'
+                        marginBottom: 'var(--mebs-spacer-lg)',
+                        flexWrap: 'wrap'
                       }}>
                         <div style={{
                           background: 'var(--mebs-gradient-primary)',
-                          width: '60px',
-                          height: '60px',
+                          width: 'clamp(50px, 6vw, 60px)',
+                          height: 'clamp(50px, 6vw, 60px)',
                           borderRadius: 'var(--mebs-border-radius-lg)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          color: 'var(--mebs-black)'
+                          color: 'var(--mebs-black)',
+                          flexShrink: 0
                         }}>
-                          <ProjectIcon size={28} />
+                          <ProjectIcon size={24} />
                         </div>
                         <h3 className="text-section-subheading" style={{
                           margin: 0,
-                          color: 'var(--mebs-royal-gold)'
+                          color: 'var(--mebs-royal-gold)',
+                          fontSize: 'clamp(1.125rem, 3vw, 1.5rem)'
                         }}>
                           {project.title}
                         </h3>
@@ -381,7 +398,9 @@ const Projects = () => {
                           <Calendar size={18} style={{
                             color: 'var(--mebs-royal-gold)'
                           }} />
-                          <span className="text-content-body text-gray-dark">
+                          <span className="text-content-body text-gray-dark" style={{
+                            fontSize: 'clamp(0.875rem, 1.5vw, 1rem)'
+                          }}>
                             {project.period}
                           </span>
                         </div>
@@ -393,7 +412,9 @@ const Projects = () => {
                           <MapPin size={18} style={{
                             color: 'var(--mebs-royal-gold)'
                           }} />
-                          <span className="text-content-body text-gray-dark">
+                          <span className="text-content-body text-gray-dark" style={{
+                            fontSize: 'clamp(0.875rem, 1.5vw, 1rem)'
+                          }}>
                             {project.location}
                           </span>
                         </div>
@@ -402,7 +423,8 @@ const Projects = () => {
                       <p className="text-content-large" style={{
                         maxWidth: '800px',
                         margin: '0 auto',
-                        color: 'var(--mebs-gray-700)'
+                        color: 'var(--mebs-gray-700)',
+                        fontSize: 'clamp(1rem, 2vw, 1.25rem)'
                       }}>
                         {project.description}
                       </p>
@@ -411,16 +433,17 @@ const Projects = () => {
                     {/* Project Details Grid */}
                     <div style={{
                       display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                      gap: 'var(--mebs-spacer-3xl)',
-                      marginBottom: 'var(--mebs-spacer-4xl)'
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+                      gap: 'clamp(1.5rem, 4vw, 2rem)',
+                      marginBottom: 'clamp(2rem, 6vw, 2.5rem)'
                     }}>
                       {/* Services Provided */}
                       <div>
                         <h4 className="text-content-large" style={{
                           marginBottom: 'var(--mebs-spacer-lg)',
                           color: 'var(--mebs-black)',
-                          fontWeight: 'var(--mebs-font-weight-semibold)'
+                          fontWeight: 'var(--mebs-font-weight-semibold)',
+                          fontSize: 'clamp(1rem, 2vw, 1.25rem)'
                         }}>
                           Services Provided
                         </h4>
@@ -444,7 +467,8 @@ const Projects = () => {
                                 flexShrink: 0
                               }} />
                               <span className="text-content-body" style={{
-                                color: 'var(--mebs-gray-700)'
+                                color: 'var(--mebs-gray-700)',
+                                fontSize: 'clamp(0.875rem, 1.5vw, 1rem)'
                               }}>
                                 {service}
                               </span>
@@ -458,7 +482,8 @@ const Projects = () => {
                         <h4 className="text-content-large" style={{
                           marginBottom: 'var(--mebs-spacer-lg)',
                           color: 'var(--mebs-black)',
-                          fontWeight: 'var(--mebs-font-weight-semibold)'
+                          fontWeight: 'var(--mebs-font-weight-semibold)',
+                          fontSize: 'clamp(1rem, 2vw, 1.25rem)'
                         }}>
                           Key Achievements
                         </h4>
@@ -482,7 +507,8 @@ const Projects = () => {
                                 flexShrink: 0
                               }} />
                               <span className="text-content-body" style={{
-                                color: 'var(--mebs-gray-700)'
+                                color: 'var(--mebs-gray-700)',
+                                fontSize: 'clamp(0.875rem, 1.5vw, 1rem)'
                               }}>
                                 {achievement}
                               </span>
@@ -497,15 +523,16 @@ const Projects = () => {
                       <h4 className="text-content-large text-center" style={{
                         marginBottom: 'var(--mebs-spacer-2xl)',
                         color: 'var(--mebs-black)',
-                        fontWeight: 'var(--mebs-font-weight-semibold)'
+                        fontWeight: 'var(--mebs-font-weight-semibold)',
+                        fontSize: 'clamp(1rem, 2vw, 1.25rem)'
                       }}>
                         Project Gallery
                       </h4>
                       
                       <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                        gap: 'var(--mebs-spacer-lg)'
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+                        gap: 'clamp(1rem, 3vw, 1.5rem)'
                       }}>
                         {project.images.map((image, imageIndex) => (
                           <motion.div
@@ -521,7 +548,7 @@ const Projects = () => {
                             }}
                           >
                             <img 
-                              src={`/src/assets/${project.folder}/${image}`}
+                              src={getImagePath(project.folder, image)}
                               alt={`${project.title} - Project image ${imageIndex + 1}`}
                               style={{
                                 width: '100%',
@@ -529,6 +556,7 @@ const Projects = () => {
                                 objectFit: 'cover',
                                 display: 'block'
                               }}
+                              loading="lazy"
                             />
                           </motion.div>
                         ))}
@@ -546,7 +574,7 @@ const Projects = () => {
       <section style={{
         background: 'var(--mebs-gradient-black-gold)',
         color: 'var(--mebs-white)',
-        padding: 'var(--mebs-spacer-5xl) var(--mebs-spacer-md)',
+        padding: 'clamp(2rem, 8vw, 4rem) var(--mebs-spacer-md)',
         textAlign: 'center'
       }}>
         <div className="container" style={{
@@ -562,7 +590,8 @@ const Projects = () => {
             <motion.h2 
               className="text-section-heading text-gold"
               style={{
-                marginBottom: 'var(--mebs-spacer-md)'
+                marginBottom: 'var(--mebs-spacer-md)',
+                fontSize: 'clamp(1.5rem, 4vw, 2rem)'
               }}
               variants={fadeInUp}
             >
@@ -573,7 +602,8 @@ const Projects = () => {
               className="text-content-large"
               style={{
                 marginBottom: 'var(--mebs-spacer-2xl)',
-                opacity: 0.9
+                opacity: 0.9,
+                fontSize: 'clamp(1rem, 2vw, 1.25rem)'
               }}
               variants={fadeInUp}
             >
@@ -601,7 +631,8 @@ const Projects = () => {
               className="text-content-small"
               style={{
                 marginTop: 'var(--mebs-spacer-2xl)',
-                opacity: 0.7
+                opacity: 0.7,
+                fontSize: 'clamp(0.75rem, 1.5vw, 0.875rem)'
               }}
               variants={fadeInUp}
             >
@@ -610,7 +641,8 @@ const Projects = () => {
                 alignItems: 'center', 
                 justifyContent: 'center',
                 gap: 'var(--mebs-spacer-xs)',
-                marginBottom: 'var(--mebs-spacer-xs)' 
+                marginBottom: 'var(--mebs-spacer-xs)',
+                flexWrap: 'wrap'
               }}>
                 <Phone size={16} />
                 073 872 8919
@@ -619,7 +651,8 @@ const Projects = () => {
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center',
-                gap: 'var(--mebs-spacer-xs)'
+                gap: 'var(--mebs-spacer-xs)',
+                flexWrap: 'wrap'
               }}>
                 <Mail size={16} />
                 nakedicollen@gmail.com

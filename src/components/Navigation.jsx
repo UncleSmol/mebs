@@ -44,7 +44,7 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Framer Motion variants - FIXED
+  // Framer Motion variants 
   const mobileMenuVariants = {
     closed: {
       x: '-100%',
@@ -83,44 +83,6 @@ const Navigation = () => {
         duration: 0.4,
         ease: 'easeOut'
       }
-    }
-  };
-
-  // Hamburger line animations
-  const topLineVariants = {
-    closed: { 
-      rotate: 0, 
-      y: 0,
-      transition: { duration: 0.3 }
-    },
-    open: { 
-      rotate: 45, 
-      y: 8,
-      transition: { duration: 0.3 }
-    }
-  };
-
-  const middleLineVariants = {
-    closed: { 
-      opacity: 1,
-      transition: { duration: 0.2 }
-    },
-    open: { 
-      opacity: 0,
-      transition: { duration: 0.2 }
-    }
-  };
-
-  const bottomLineVariants = {
-    closed: { 
-      rotate: 0, 
-      y: 0,
-      transition: { duration: 0.3 }
-    },
-    open: { 
-      rotate: -45, 
-      y: -8,
-      transition: { duration: 0.3 }
     }
   };
 
@@ -219,7 +181,7 @@ const Navigation = () => {
           ))}
         </nav>
 
-     
+        {/* Fixed Hamburger Button */}
         <motion.button
           onClick={toggleMobileMenu}
           style={{
@@ -246,6 +208,7 @@ const Navigation = () => {
           onMouseLeave={(e) => {
             e.target.style.background = 'var(--mebs-gray-50)';
           }}
+          animate={isMobileMenuOpen ? "open" : "closed"}
         >
           {/* Hamburger Line 1 - Top */}
           <motion.span
@@ -256,8 +219,12 @@ const Navigation = () => {
               borderRadius: '2px',
               display: 'block'
             }}
-            variants={topLineVariants}
-            animate={isMobileMenuOpen ? "open" : "closed"}
+            initial={false}
+            animate={{
+              rotate: isMobileMenuOpen ? 45 : 0,
+              y: isMobileMenuOpen ? 8 : 0,
+            }}
+            transition={{ duration: 0.3 }}
           />
           {/* Hamburger Line 2 - Middle */}
           <motion.span
@@ -268,8 +235,11 @@ const Navigation = () => {
               borderRadius: '2px',
               display: 'block'
             }}
-            variants={middleLineVariants}
-            animate={isMobileMenuOpen ? "open" : "closed"}
+            initial={false}
+            animate={{
+              opacity: isMobileMenuOpen ? 0 : 1,
+            }}
+            transition={{ duration: 0.2 }}
           />
           {/* Hamburger Line 3 - Bottom */}
           <motion.span
@@ -280,13 +250,17 @@ const Navigation = () => {
               borderRadius: '2px',
               display: 'block'
             }}
-            variants={bottomLineVariants}
-            animate={isMobileMenuOpen ? "open" : "closed"}
+            initial={false}
+            animate={{
+              rotate: isMobileMenuOpen ? -45 : 0,
+              y: isMobileMenuOpen ? -8 : 0,
+            }}
+            transition={{ duration: 0.3 }}
           />
         </motion.button>
       </div>
 
-      
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div

@@ -159,7 +159,9 @@ const Services = () => {
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
                 gap: 'var(--mebs-spacer-xl)',
-                marginTop: 'var(--mebs-spacer-4xl)'
+                marginTop: 'var(--mebs-spacer-4xl)',
+                maxWidth: '800px',
+                margin: '0 auto'
               }}
               variants={staggerContainer}
             >
@@ -250,7 +252,7 @@ const Services = () => {
                     variants={fadeInUp}
                     style={{
                       background: index % 2 === 0 ? 'var(--mebs-white-off)' : 'var(--mebs-white)',
-                      padding: 'var(--mebs-spacer-4xl)',
+                      padding: 'clamp(var(--mebs-spacer-xl), 5vw, var(--mebs-spacer-4xl))',
                       borderRadius: 'var(--mebs-border-radius-2xl)',
                       border: 'var(--mebs-border-gold-thin)',
                       boxShadow: index % 2 === 0 ? 'var(--mebs-shadow)' : 'none'
@@ -258,7 +260,7 @@ const Services = () => {
                   >
                     <div style={{
                       display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))',
                       gap: 'var(--mebs-spacer-3xl)',
                       alignItems: 'start'
                     }}>
@@ -266,63 +268,73 @@ const Services = () => {
                       <div>
                         <div style={{
                           display: 'flex',
-                          alignItems: 'center',
+                          flexDirection: 'column',
                           gap: 'var(--mebs-spacer-md)',
                           marginBottom: 'var(--mebs-spacer-lg)'
                         }}>
                           <div style={{
-                            background: 'var(--mebs-gradient-primary)',
-                            width: '80px',
-                            height: '80px',
-                            borderRadius: 'var(--mebs-border-radius-lg)',
                             display: 'flex',
                             alignItems: 'center',
-                            justifyContent: 'center',
-                            color: 'var(--mebs-black)'
+                            gap: 'var(--mebs-spacer-md)',
+                            flexWrap: 'wrap'
                           }}>
-                            <IconComponent size={32} strokeWidth={2} />
+                            <div style={{
+                              background: 'var(--mebs-gradient-primary)',
+                              width: 'clamp(60px, 8vw, 80px)',
+                              height: 'clamp(60px, 8vw, 80px)',
+                              borderRadius: 'var(--mebs-border-radius-lg)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              color: 'var(--mebs-black)',
+                              flexShrink: 0
+                            }}>
+                              <IconComponent size="clamp(24px, 3vw, 32px)" strokeWidth={2} />
+                            </div>
+                            <h3 className="text-section-subheading" style={{ 
+                              margin: 0,
+                              color: 'var(--mebs-black)',
+                              fontSize: 'clamp(var(--mebs-font-size-lg), 4vw, var(--mebs-font-size-xl))'
+                            }}>
+                              {service.title}
+                            </h3>
                           </div>
-                          <h3 className="text-section-subheading" style={{ 
-                            margin: 0,
-                            color: 'var(--mebs-black)'
+                          
+                          <p className="text-content-large" style={{
+                            marginBottom: 'var(--mebs-spacer-xl)',
+                            color: 'var(--mebs-gray-700)'
                           }}>
-                            {service.title}
-                          </h3>
-                        </div>
-                        
-                        <p className="text-content-large" style={{
-                          marginBottom: 'var(--mebs-spacer-xl)',
-                          color: 'var(--mebs-gray-700)'
-                        }}>
-                          {service.description}
-                        </p>
+                            {service.description}
+                          </p>
 
-                        <div style={{
-                          display: 'flex',
-                          flexWrap: 'wrap',
-                          gap: 'var(--mebs-spacer-sm)',
-                          marginBottom: 'var(--mebs-spacer-xl)'
-                        }}>
-                          {service.areas.map((area, areaIndex) => (
-                            <span
-                              key={areaIndex}
-                              style={{
-                                background: 'var(--mebs-bg-highlight-gold)',
-                                color: 'var(--mebs-black)',
-                                padding: 'var(--mebs-spacer-xs) var(--mebs-spacer-sm)',
-                                borderRadius: 'var(--mebs-border-radius-pill)',
-                                fontSize: 'var(--mebs-font-size-sm)',
-                                fontWeight: 'var(--mebs-font-weight-medium)'
-                              }}
-                            >
-                              {area}
-                            </span>
-                          ))}
+                          <div style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            gap: 'var(--mebs-spacer-sm)',
+                            marginBottom: 'var(--mebs-spacer-xl)'
+                          }}>
+                            {service.areas.map((area, areaIndex) => (
+                              <span
+                                key={areaIndex}
+                                style={{
+                                  background: 'var(--mebs-bg-highlight-gold)',
+                                  color: 'var(--mebs-black)',
+                                  padding: 'var(--mebs-spacer-xs) var(--mebs-spacer-sm)',
+                                  borderRadius: 'var(--mebs-border-radius-pill)',
+                                  fontSize: 'clamp(var(--mebs-font-size-xs), 2vw, var(--mebs-font-size-sm))',
+                                  fontWeight: 'var(--mebs-font-weight-medium)',
+                                  whiteSpace: 'nowrap'
+                                }}
+                              >
+                                {area}
+                              </span>
+                            ))}
+                          </div>
                         </div>
 
                         <CtaButton variant="primary">
-                          <ArrowRight size={16} style={{ marginLeft: '4px' }} />
                           Get Service Quote
+                          <ArrowRight size={16} style={{ marginLeft: '4px' }} />
                         </CtaButton>
                       </div>
 
@@ -337,7 +349,7 @@ const Services = () => {
                         </h4>
                         <div style={{
                           display: 'grid',
-                          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
                           gap: 'var(--mebs-spacer-md)'
                         }}>
                           {service.features.map((feature, featureIndex) => (
@@ -358,7 +370,8 @@ const Services = () => {
                                 }} 
                               />
                               <span className="text-content-body" style={{
-                                color: 'var(--mebs-gray-700)'
+                                color: 'var(--mebs-gray-700)',
+                                fontSize: 'clamp(var(--mebs-font-size-sm), 2vw, var(--mebs-font-size-base))'
                               }}>
                                 {feature}
                               </span>
@@ -395,7 +408,8 @@ const Services = () => {
             <motion.h2 
               className="text-section-heading text-gold"
               style={{
-                marginBottom: 'var(--mebs-spacer-md)'
+                marginBottom: 'var(--mebs-spacer-md)',
+                fontSize: 'clamp(var(--mebs-font-size-xl), 4vw, var(--mebs-font-size-2xl))'
               }}
               variants={fadeInUp}
             >
@@ -406,7 +420,8 @@ const Services = () => {
               className="text-content-large"
               style={{
                 marginBottom: 'var(--mebs-spacer-2xl)',
-                opacity: 0.9
+                opacity: 0.9,
+                fontSize: 'clamp(var(--mebs-font-size-base), 2vw, var(--mebs-font-size-lg))'
               }}
               variants={fadeInUp}
             >
@@ -436,7 +451,8 @@ const Services = () => {
               className="text-content-small"
               style={{
                 marginTop: 'var(--mebs-spacer-2xl)',
-                opacity: 0.7
+                opacity: 0.7,
+                fontSize: 'clamp(var(--mebs-font-size-xs), 2vw, var(--mebs-font-size-sm))'
               }}
               variants={fadeInUp}
             >
@@ -445,7 +461,8 @@ const Services = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: 'var(--mebs-spacer-xs)'
+                gap: 'var(--mebs-spacer-xs)',
+                flexWrap: 'wrap'
               }}>
                 <Phone size={14} />
                 073 872 8919
@@ -454,7 +471,8 @@ const Services = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: 'var(--mebs-spacer-xs)'
+                gap: 'var(--mebs-spacer-xs)',
+                flexWrap: 'wrap'
               }}>
                 <Mail size={14} />
                 nakedicollen@gmail.com
