@@ -44,45 +44,30 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Framer Motion variants 
+  // Simple slide animation for mobile menu
   const mobileMenuVariants = {
     closed: {
       x: '-100%',
-      transition: {
-        type: 'spring',
-        stiffness: 400,
-        damping: 40,
-        staggerChildren: 0.1,
-        staggerDirection: -1
-      }
-    },
-    open: {
-      x: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 400,
-        damping: 40,
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const navItemVariants = {
-    closed: {
-      x: -50,
-      opacity: 0,
       transition: {
         duration: 0.3
       }
     },
     open: {
       x: 0,
-      opacity: 1,
       transition: {
-        duration: 0.4,
-        ease: 'easeOut'
+        duration: 0.3
       }
+    }
+  };
+
+  const navItemVariants = {
+    closed: {
+      opacity: 0,
+      x: -20,
+    },
+    open: {
+      opacity: 1,
+      x: 0,
     }
   };
 
@@ -105,8 +90,7 @@ const Navigation = () => {
         padding: 'var(--mebs-spacer-sm) var(--mebs-spacer-md)',
         maxWidth: 'var(--mebs-container-xl)',
         margin: '0 auto',
-        position: 'relative',
-        zIndex: 'var(--mebs-z-modal) + 1' 
+        position: 'relative'
       }}>
         
         {/* Logo */}
@@ -116,7 +100,7 @@ const Navigation = () => {
             display: 'flex',
             alignItems: 'center',
             textDecoration: 'none',
-            zIndex: 'var(--mebs-z-modal) + 2' 
+            zIndex: 1000
           }}
           onClick={closeMobileMenu}
         >
@@ -181,83 +165,94 @@ const Navigation = () => {
           ))}
         </nav>
 
-        {/* Fixed Hamburger Button */}
-        <motion.button
+        {/* Menu Toggle Button - Always visible in header */}
+        <button
           onClick={toggleMobileMenu}
           style={{
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'var(--mebs-gray-50)',
+            backgroundColor: isMobileMenuOpen ? 'var(--mebs-royal-gold)' : 'var(--mebs-gray-50)',
             border: 'none',
             cursor: 'pointer',
-            padding: 'var(--mebs-spacer-xs)',
+            padding: 'var(--mebs-spacer-sm)',
             borderRadius: 'var(--mebs-border-radius)',
             transition: 'var(--mebs-transition-base)',
-            width: '2.5rem',
-            height: '2.5rem',
-            gap: '4px',
+            width: '3rem',
+            height: '3rem',
             position: 'relative',
-            zIndex: 'calc(var(--mebs-z-modal) + 3)'
+            zIndex: 1001
           }}
           className="mobile-menu-btn"
           onMouseEnter={(e) => {
             e.target.style.background = 'var(--mebs-royal-gold)';
           }}
           onMouseLeave={(e) => {
-            e.target.style.background = 'var(--mebs-gray-50)';
+            if (!isMobileMenuOpen) {
+              e.target.style.background = 'var(--mebs-gray-50)';
+            }
           }}
-          animate={isMobileMenuOpen ? "open" : "closed"}
         >
-          {/* Hamburger Line 1 - Top */}
-          <motion.span
-            style={{
+          {/* Hamburger Icon (3 lines) when closed */}
+          {!isMobileMenuOpen && (
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px',
               width: '20px',
-              height: '2px',
-              background: 'var(--mebs-black)',
-              borderRadius: '2px',
-              display: 'block'
-            }}
-            initial={false}
-            animate={{
-              rotate: isMobileMenuOpen ? 45 : 0,
-              y: isMobileMenuOpen ? 8 : 0,
-            }}
-            transition={{ duration: 0.3 }}
-          />
-          {/* Hamburger Line 2 - Middle */}
-          <motion.span
-            style={{
+              height: '16px'
+            }}>
+              <div style={{
+                width: '20px',
+                height: '2px',
+                background: 'var(--mebs-black)',
+                borderRadius: '1px'
+              }} />
+              <div style={{
+                width: '20px',
+                height: '2px',
+                background: 'var(--mebs-black)',
+                borderRadius: '1px'
+              }} />
+              <div style={{
+                width: '20px',
+                height: '2px',
+                background: 'var(--mebs-black)',
+                borderRadius: '1px'
+              }} />
+            </div>
+          )}
+          
+          {/* X Icon when open */}
+          {isMobileMenuOpen && (
+            <div style={{
+              position: 'relative',
               width: '20px',
-              height: '2px',
-              background: 'var(--mebs-black)',
-              borderRadius: '2px',
-              display: 'block'
-            }}
-            initial={false}
-            animate={{
-              opacity: isMobileMenuOpen ? 0 : 1,
-            }}
-            transition={{ duration: 0.2 }}
-          />
-          {/* Hamburger Line 3 - Bottom */}
-          <motion.span
-            style={{
-              width: '20px',
-              height: '2px',
-              background: 'var(--mebs-black)',
-              borderRadius: '2px',
-              display: 'block'
-            }}
-            initial={false}
-            animate={{
-              rotate: isMobileMenuOpen ? -45 : 0,
-              y: isMobileMenuOpen ? -8 : 0,
-            }}
-            transition={{ duration: 0.3 }}
-          />
-        </motion.button>
+              height: '20px'
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '20px',
+                height: '2px',
+                background: 'var(--mebs-black)',
+                borderRadius: '1px',
+                transform: 'translate(-50%, -50%) rotate(45deg)'
+              }} />
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: '20px',
+                height: '2px',
+                background: 'var(--mebs-black)',
+                borderRadius: '1px',
+                transform: 'translate(-50%, -50%) rotate(-45deg)'
+              }} />
+            </div>
+          )}
+        </button>
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -271,31 +266,32 @@ const Navigation = () => {
               right: 0,
               bottom: 0,
               background: 'var(--mebs-black)',
-              zIndex: 'var(--mebs-z-modal)', 
+              zIndex: 999,
               display: 'flex',
-              flexDirection: 'column'
+              flexDirection: 'column',
+              paddingTop: 'calc(var(--mebs-header-height) + var(--mebs-spacer-xl))'
             }}
-            className="mobile-nav-overlay"
             variants={mobileMenuVariants}
             initial="closed"
             animate="open"
             exit="closed"
           >
-
             {/* Mobile Navigation Items */}
             <nav style={{
               display: 'flex',
               flexDirection: 'column',
               flex: 1,
-              padding: 'var(--mebs-spacer-4xl) var(--mebs-spacer-md) var(--mebs-spacer-xl)',
               gap: 'var(--mebs-spacer-xs)',
-              marginTop: 'var(--mebs-header-height)'
+              padding: '0 var(--mebs-spacer-md)'
             }}>
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.path}
                   variants={navItemVariants}
-                  custom={index}
+                  initial="closed"
+                  animate="open"
+                  exit="closed"
+                  transition={{ delay: index * 0.1 }}
                 >
                   <Link
                     to={item.path}
@@ -305,28 +301,28 @@ const Navigation = () => {
                       alignItems: 'center',
                       gap: 'var(--mebs-spacer-md)',
                       fontFamily: 'var(--mebs-font-family-body)',
-                      fontSize: 'var(--mebs-font-size-lg)',
+                      fontSize: 'var(--mebs-font-size-xl)',
                       fontWeight: 'var(--mebs-font-weight-medium)',
                       color: location.pathname === item.path ? 'var(--mebs-royal-gold)' : 'var(--mebs-white)',
                       textDecoration: 'none',
                       textTransform: 'uppercase',
                       letterSpacing: 'var(--mebs-tracking-wide)',
-                      padding: 'var(--mebs-spacer-md) var(--mebs-spacer-lg)',
+                      padding: 'var(--mebs-spacer-lg) var(--mebs-spacer-xl)',
                       borderRadius: 'var(--mebs-border-radius-lg)',
                       transition: 'var(--mebs-transition-base)',
-                      borderLeft: location.pathname === item.path ? 'var(--mebs-border-gold-thick)' : 'none',
-                      background: location.pathname === item.path ? 'var(--mebs-bg-highlight-gold)' : 'transparent'
+                      borderLeft: location.pathname === item.path ? '4px solid var(--mebs-royal-gold)' : 'none',
+                      background: location.pathname === item.path ? 'rgba(212, 175, 55, 0.1)' : 'transparent'
                     }}
                     onMouseEnter={(e) => {
                       if (location.pathname !== item.path) {
+                        e.target.style.background = 'rgba(212, 175, 55, 0.1)';
                         e.target.style.color = 'var(--mebs-royal-gold-light)';
-                        e.target.style.background = 'var(--mebs-bg-highlight-gold)';
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (location.pathname !== item.path) {
-                        e.target.style.color = 'var(--mebs-white)';
                         e.target.style.background = 'transparent';
+                        e.target.style.color = 'var(--mebs-white)';
                       }
                     }}
                   >
@@ -347,15 +343,19 @@ const Navigation = () => {
             {/* Developer Signature - Bottom of Mobile Menu */}
             <motion.div 
               style={{
-                borderTop: 'var(--mebs-border-gold-thin)',
+                borderTop: '1px solid var(--mebs-royal-gold)',
                 padding: 'var(--mebs-spacer-xl) var(--mebs-spacer-md)',
                 textAlign: 'center',
-                background: 'var(--mebs-black-light)'
-              }} 
-              className="dev-sig-mobile"
+                background: 'rgba(0, 0, 0, 0.3)',
+                marginTop: 'auto'
+              }}
               variants={navItemVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              transition={{ delay: navItems.length * 0.1 }}
             >
-              <motion.a 
+              <a 
                 href="https://unclesmol.github.io/dev-doc" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -370,9 +370,11 @@ const Navigation = () => {
                   transition: 'var(--mebs-transition-base)',
                   padding: 'var(--mebs-spacer-sm)'
                 }}
-                whileHover={{
-                  color: 'var(--mebs-royal-gold)',
-                  scale: 1.05
+                onMouseEnter={(e) => {
+                  e.target.style.color = 'var(--mebs-royal-gold)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.color = 'var(--mebs-gray-400)';
                 }}
               >
                 <span style={{
@@ -387,7 +389,7 @@ const Navigation = () => {
                     width: 'auto'
                   }}
                 />
-              </motion.a>
+              </a>
             </motion.div>
           </motion.div>
         )}
